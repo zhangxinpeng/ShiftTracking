@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>All Users</title>
+<link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+</head>
+<body>　
+
+
+
+	<div class="popup-gallery">
+		<table role="presentation" class="table table-striped">
+			<thead class="ui-widget-header"><tr><th>User ID</th><th>Password</th><th>Security Answer</th></tr></thead>
+			<tbody id="tbody_users" class="ui-widget-content">
+				<tr><td>test</td></tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<script src="jquery-ui/external/jquery/jquery.js"></script>
+	<script src="jquery-ui/jquery-ui.js"></script>
+	<script>
+	//start of body
+		$("#tbody_users").ready(function() {
+			loadAllUsers();
+		});
+
+		function loadAllUsers() {
+			$.ajax({
+				// the URL for the request
+				url : "UserServlet",
+				// the data to send (will be converted to a query string)
+				data : {
+					action : "getall"
+				},
+				// whether this is a POST or GET request
+				type : "GET",
+				// the type of data we expect back
+				dataType : "json",
+				// code to run if the request succeeds;
+				// the response is passed to the function
+				success : function(allusers) {
+					$.each(allusers, function(ind, user) {
+						$("#tbody_users").last().append("<tr><td>This is test</td></tr>");
+					});
+				},
+				// code to run if the request fails; the raw request and
+				// status codes are passed to the function
+				error : function(xhr, status, errorThrown) {
+					alert("Sorry, there was a problem!");
+					console.log("Error: " + errorThrown);
+					console.log("Status: " + status);
+					console.dir(xhr);
+				},
+				// code to run regardless of success or failure
+				complete : function(xhr, status) {
+					//alert("The request is complete!");
+				}
+			});
+
+		}
+	</script>
+</body>
+</html>
