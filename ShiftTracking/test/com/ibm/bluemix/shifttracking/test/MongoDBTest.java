@@ -43,16 +43,19 @@ public class MongoDBTest {
 	@Test
 	public void testGetCollection() {
 		
-		DBCollection project = SimpleMongoDBHelper.getCollection("projects");
+		DBCollection project = SimpleMongoDBHelper.getCollection("users");
+		/*
 		BasicDBObject document = new BasicDBObject();
         document.put("name", "Tom");
         document.put("age", 30);
         document.put("createdDate", new Date());
         project.insert(document);
-        
+        */
         DBCursor myDoc  = project.find();
         while(myDoc.hasNext()){
+        	//project.remove(myDoc.next());
 			System.out.println(myDoc.next());
+			
 		}
 		fail("Not yet implemented");
 	}

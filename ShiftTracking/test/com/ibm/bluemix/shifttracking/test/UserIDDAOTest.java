@@ -31,6 +31,7 @@ public class UserIDDAOTest {
 
 	@Test
 	public void testAdd() {
+		
 		UserIDDAO dao = new UserIDDAO();
 		UserIDBean bean = new UserIDBean();
 		bean.setUserID("jianjunw@cn.ibm.com");
@@ -51,7 +52,7 @@ public class UserIDDAOTest {
 	public void testUpdate() {
 		UserIDDAO dao = new UserIDDAO();
 		UserIDBean b = dao.find("jianjunw@cn.ibm.com");
-		b.setAnswer("I don't know you a");
+		b.setAnswer("I don't know you ab");
 		dao.update(b);
 		
 		b = dao.find("jianjunw@cn.ibm.com");
@@ -59,11 +60,22 @@ public class UserIDDAOTest {
 	}
 
 	@Test
+	public void testPrintAll () {
+		UserIDDAO dao = new UserIDDAO();
+		for (UserIDBean o : dao.getAllUsers()) {
+	
+			System.out.println(o);
+		}
+		//dao.removeAll();
+	}
+	@Test
 	public void testDelete() {
+		/*
 		UserIDDAO dao = new UserIDDAO();
 		UserIDBean b = new UserIDBean();
 		b.setUserID("jianjunw@cn.ibm.com");
 		dao.remove(b);
+		*/
 	}
 
 	@Test

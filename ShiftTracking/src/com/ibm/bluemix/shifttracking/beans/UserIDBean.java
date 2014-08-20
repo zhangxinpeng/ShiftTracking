@@ -1,5 +1,7 @@
 package com.ibm.bluemix.shifttracking.beans;
 
+
+
 public class UserIDBean {
 
 	private String userID;
@@ -29,6 +31,7 @@ public class UserIDBean {
 	public String toString() {
 		return "UserIDBean [toString()=" + "user id:" + userID + ",password:" + password + ",answer:" + answer + "]";
 	}
+
 
 	
 }

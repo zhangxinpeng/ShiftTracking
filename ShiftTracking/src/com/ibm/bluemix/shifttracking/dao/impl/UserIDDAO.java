@@ -1,5 +1,8 @@
 package com.ibm.bluemix.shifttracking.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ibm.bluemix.shifttracking.beans.*;
 import com.ibm.bluemix.shifttracking.dao.inter.*;
 import com.ibm.bluemix.shifttracking.util.*;
@@ -72,6 +75,26 @@ public class UserIDDAO implements IUserIDDAO {
 	public boolean clearPassword(String userID, String answer) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public boolean removeAll () {
+		users.drop();
+		return true;
+	}
+	@Override
+	public List<UserIDBean> getAllUsers() {
+		List<UserIDBean> allusers = new ArrayList<UserIDBean> ();
+		DBCursor cursor = users.find();
+		while (cursor.hasNext()) {
+			DBObject b = cursor.next();
+			//System.out.println(b);
+			UserIDBean bean = new UserIDBean();
+			bean.setUserID(b.get("userid").toString());
+			bean.setPassword(b.get("password").toString());
+			bean.setAnswer(b.get("answer").toString());
+			allusers.add(bean);
+		}
+		return allusers;
 	}
 
 }
