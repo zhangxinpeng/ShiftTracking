@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2014 9:54:27 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.ibm.hrnotes.shifttracking.entites">
+    <class name="Employee" table="SSH_EMPLOYEE" discriminator-value="EMPLOYEE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        
+        <discriminator column="TYPE" type="string"></discriminator>
+        
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        
+        <set name="projects" table="SSH_EMP_PROJ_ADMIN">
+            <key>
+                <column name="EMP_ID" />
+            </key>
+            <many-to-many class="Project" column="PROJ_ID"></many-to-many>
+        </set>
+        
+        <subclass name="ProjectAdmin" discriminator-value="PROJECTADMIN">
+        	<set name="adminProjects" table="SSH_EMP_PROJ_ADMIN">
+        		<key>
+        			<column name="ADMIN_ID"></column>
+        		</key>
+        		<many-to-many class="Project" column="PROJ_ID"></many-to-many>
+        	</set>
+        
+        </subclass>
+        <subclass name="Manager" discriminator-value="MANAGER">
+        	<set name="managedProjects" table="SSH_PROJECT">
+        		<key column="PROJECT_MANAGER_ID">
+        		</key>
+        		<one-to-many class="Project" />
+        	</set>
+        </subclass>
+    </class>
+</hibernate-mapping>

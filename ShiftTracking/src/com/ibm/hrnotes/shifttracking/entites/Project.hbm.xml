@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2014 9:54:27 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.ibm.hrnotes.shifttracking.entites">
+    <class name="Project" table="SSH_PROJECT">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="projectId" type="java.lang.String">
+            <column name="PROJECT_ID" />
+        </property>
+        <property name="projectName" type="java.lang.String">
+            <column name="PROJECT_NAME" />
+        </property>
+        
+        <!-- n - 1 -->
+        <many-to-one name="projectManager" class="Manager" column="PROJECT_MANAGER_ID" >
+        </many-to-one>
+        
+        
+        <set name="admins" table="SSH_EMP_PROJ_ADMIN" inverse="true">
+            <key>
+                <column name="PROJ_ID" />
+            </key>
+            <many-to-many class="ProjectAdmin" column="ADMIN_ID"></many-to-many>
+        </set>
+        
+        <set name="members" table="SSH_EMP_PROJ_ADMIN" inverse="true">
+            <key>
+                <column name="PROJ_ID" />
+            </key>
+            <many-to-many class="Employee" column="EMP_ID"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
