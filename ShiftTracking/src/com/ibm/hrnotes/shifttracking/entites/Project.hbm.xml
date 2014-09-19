@@ -20,14 +20,14 @@
         </many-to-one>
         
         
-        <set name="admins" table="SSH_EMP_PROJ_ADMIN" inverse="true">
+        <set name="admins" table="SSH_PROJ_ADMIN" inverse="true">
             <key>
                 <column name="PROJ_ID" />
             </key>
             <many-to-many class="ProjectAdmin" column="ADMIN_ID"></many-to-many>
         </set>
         
-        <set name="members" table="SSH_EMP_PROJ_ADMIN" inverse="true">
+        <set name="members" table="SSH_EMP_PROJ" inverse="true">
             <key>
                 <column name="PROJ_ID" />
             </key>
