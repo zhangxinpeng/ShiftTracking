@@ -13,7 +13,7 @@ import com.ibm.hrnotes.shifttracking.service.EmployeeService;
 public class EmployeeAction extends ActionSupport implements RequestAware, ModelDriven<Employee>, Preparable {
 
 	private EmployeeService employeeService;
-	
+	// I am not xiao huan xiong!
 	
 	/**
 	 * 
