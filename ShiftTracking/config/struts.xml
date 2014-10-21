@@ -7,7 +7,7 @@
 
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" />
-
+	<constant name="struts.ui.theme" value="simple"/>
 
 	<package name="default" namespace="/" extends="struts-default">
 
@@ -33,6 +33,12 @@
         
 		<action name="emp-*" class="employeeAction" method="{1}">
 			<result name="list">/WEB-INF/views/emp-list.jsp</result>
+			<result name="login-success">/WEB-INF/pages/home.jsp</result>
+			<result name="input">/WEB-INF/pages/login.jsp</result>
+		</action>
+		
+		<action name="project-*" class="" method="{1}">
+			<result name="project-create-page">/WEB-INF/pages/createproject.jsp</result>
 		</action>
 	</package>
 

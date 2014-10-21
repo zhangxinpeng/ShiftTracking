@@ -62,6 +62,14 @@ public class Project {
 	public void setMembers(Set<Employee> members) {
 		this.members = members;
 	}
+
+	@Override
+	public String toString() {
+		return "Project [id=" + id + ", projectId=" + projectId
+				+ ", projectName=" + projectName + ", projectManager="
+				+ projectManager + ", admins=" + admins + ", members="
+				+ members + "]";
+	}
 	
 	
 }
