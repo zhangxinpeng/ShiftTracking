@@ -11,8 +11,9 @@
 
 	<context:component-scan base-package="com.ibm.bluemix.shifttracking.spring.hibernate"></context:component-scan>
 	<!-- data source -->
-	<context:property-placeholder location="classpath:db.properties" />
+	<context:property-placeholder location="classpath:postgresql.properties" />
 	 <!--  
+	 <context:property-placeholder location="classpath:db.properties" />
 	<context:property-placeholder location="classpath:bluemix.properties" />
 	-->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
