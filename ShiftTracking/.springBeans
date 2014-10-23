@@ -10,6 +10,7 @@
 		<config>config/applicationContext.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>config/applicationContext-beans.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
