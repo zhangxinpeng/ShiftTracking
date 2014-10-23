@@ -16,5 +16,12 @@
 		<property name="employeeService" ref="employeeService"></property>
 	</bean>
 	
+	<bean id="projectDao" class="com.ibm.hrnotes.shifttracking.dao.impl.ProjectDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="projectService" class=" com.ibm.hrnotes.shifttracking.service.ProjectService">
+		<property name="projectDao" ref="projectDao"></property>
+	</bean>
 	
 </beans>

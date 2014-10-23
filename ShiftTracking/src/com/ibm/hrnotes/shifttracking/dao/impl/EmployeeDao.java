@@ -29,8 +29,9 @@ public class EmployeeDao extends BaseDao implements IEmployeeDao {
 
 	@Override
 	public boolean resetPassword(Employee employee) {
-		// TODO Auto-generated method stub
-		return false;
+		employee.setPassword(employee.getEmail());
+		getSession().update(employee);
+		return true;
 	}
 
 	@Override

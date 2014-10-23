@@ -21,16 +21,30 @@ public class EmployeeAction extends ActionSupport implements RequestAware, Model
 	private static final long serialVersionUID = 6840700037768314074L;
 	private Map<String, Object> request;
 	
+	private Employee model;
+	
 	@Override
 	public void prepare() throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void prepareLoginValidate() {
+		model = new Employee();
+	}
+	public String loginValidate () {
+		System.out.println("password is " + model.getPassword());
+		if (employeeService.validate(model)) {
+			return "login-success";
+		} else {
+			return "input";
+		}
+		
+	}
 
 	@Override
 	public Employee getModel() {
-		// TODO Auto-generated method stub
-		return null;
+		return model;
 	}
 
 	@Override
