@@ -50,6 +50,7 @@ public class EmployeeAction extends ActionSupport implements RequestAware, Model
 	@Override
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
+	
 	}
 
 	public String login () {
@@ -59,6 +60,6 @@ public class EmployeeAction extends ActionSupport implements RequestAware, Model
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
-
+	
 }
 
