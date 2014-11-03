@@ -12,7 +12,12 @@ public abstract class BaseDao {
 	}
 	
 	public Session getSession(){
-		return this.sessionFactory.getCurrentSession();
+		//return this.sessionFactory.getCurrentSession();
+		return this.sessionFactory.openSession();
+	}
+	
+	public SessionFactory getSessionFactory(){
+		return this.sessionFactory;
 	}
 	
 }
