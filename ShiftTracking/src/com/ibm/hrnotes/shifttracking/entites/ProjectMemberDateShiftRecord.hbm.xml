@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 2, 2014 3:53:50 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.ibm.hrnotes.shifttracking.entites.ProjectMemberDateShiftRecord" table="PROJECTMEMBERDATESHIFTRECORD">
+        <id name="memberId" type="java.lang.String">
+            <column name="MEMBERID" />
+            <generator class="assigned" />
+        </id>
+        <property name="projectId" type="java.lang.String">
+            <column name="PROJECTID" />
+        </property>
+        <property name="year" type="java.lang.String">
+            <column name="YEAR" />
+        </property>
+        <property name="month" type="java.lang.String">
+            <column name="MONTH" />
+        </property>
+        <property name="day" type="java.lang.String">
+            <column name="DAY" />
+        </property>
+        <property name="shiftRecord" type="java.lang.String">
+            <column name="SHIFTRECORD" />
+        </property>
+    </class>
+</hibernate-mapping>
