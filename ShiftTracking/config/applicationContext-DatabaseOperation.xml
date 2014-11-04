@@ -59,7 +59,29 @@
 	</bean>
 	
     <!-- Xin Peng Zhang update end -->
-	
+    
+    
+    <!-- Updated By Xin Peng Zhang 11/03/2014 Begin -->
+    <bean id="Employee_InformationService" class="com.ibm.hrnotes.shifttracking.service.Employee_InformationService">
+		<property name="Employee_InformationDaoImpl" ref="Employee_InformationDaoImpl"></property>
+		<property name="Employee_PeMDaoImpl" ref="Employee_PeMDaoImpl"></property>
+	</bean>
+    
+    <bean id="Project_InformationService" class="com.ibm.hrnotes.shifttracking.service.Project_InformationService">	
+		<property name="Project_InformationDaoImpl" ref="Project_InformationDaoImpl"></property>
+		<property name="Project_ManagerDaoImpl" ref="Project_ManagerDaoImpl"></property>
+		<property name="Project_AdminDaoImpl" ref="Project_AdminDaoImpl"></property>
+		<property name="Project_MemberDaoImpl" ref="Project_MemberDaoImpl"></property>		
+		<property name="AM_ProjectDaoImpl" ref="AM_ProjectDaoImpl"></property>
+		<property name="ProjectMemberDateShiftRecordDaoImpl" ref="ProjectMemberDateShiftRecordDaoImpl"></property>
+	</bean>
+    
+    <bean id="ProjectAndEmployeeShiftTrackingService" class="com.ibm.hrnotes.shifttracking.service.ProjectAndEmployeeShiftTrackingService">
+		<property name="Employee_InformationService" ref="Employee_InformationService"></property>
+		<property name="Project_InformationService" ref="Project_InformationService"></property>
+	</bean>
+    
+	<!-- Updated By Xin Peng Zhang 11/03/2014 End -->
 
 	
 </beans>
