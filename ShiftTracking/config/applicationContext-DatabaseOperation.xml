@@ -80,6 +80,11 @@
 		<property name="Employee_InformationService" ref="Employee_InformationService"></property>
 		<property name="Project_InformationService" ref="Project_InformationService"></property>
 	</bean>
+	
+	<bean id="ProjectAndEmployeeShiftTrackingGetService" class="com.ibm.hrnotes.shifttracking.service.ProjectAndEmployeeShiftTrackingGetService">
+		<property name="Employee_InformationService" ref="Employee_InformationService"></property>
+		<property name="Project_InformationService" ref="Project_InformationService"></property>
+	</bean>
     
 	<!-- Updated By Xin Peng Zhang 11/03/2014 End -->
 

@@ -138,5 +138,50 @@ public class ProjectMemberDateShiftRecordDaoImpl extends BaseDao implements
 		}
 		return projectMemberDateShiftRecord;
 	}
+	
+	public LinkedList<ProjectMemberDateShiftRecord> selectShiftRecordByProjectIdAndMemberId(
+			String projectId, String memberId) {
+		// TODO Auto-generated method stub
+		ProjectMemberDateShiftRecord projectMemberDateShiftRecord;
+		LinkedList<ProjectMemberDateShiftRecord> ShiftRecord_list = new LinkedList<ProjectMemberDateShiftRecord>();
+		try{
+		
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+
+		String hql = "select pmdsr.projectId, pmdsr.memberId, pmdsr.year ,pmdsr.month, pmdsr.day, pmdsr.shiftRecord from ProjectMemberDateShiftRecord pmdsr where pmdsr.projectId = ? and pmdsr.memberId = ? ";
+		Query querySelect = session.createQuery(hql);
+		querySelect.setString(0, projectId);
+		querySelect.setString(1, memberId);
+	    
+		//list = (LinkedList<ProjectMemberDateShiftRecord>)querySelect.list();
+		List<Object[]> list = querySelect.list();
+		trans.commit();
+		for(Object[] object : list){ 
+			projectMemberDateShiftRecord = new ProjectMemberDateShiftRecord();
+			projectMemberDateShiftRecord.setProjectId((String)object[0]);
+			projectMemberDateShiftRecord.setMemberId((String)object[1]);
+			
+			projectMemberDateShiftRecord.setYear((String)object[2]);
+			projectMemberDateShiftRecord.setMonth((String)object[3]);
+			projectMemberDateShiftRecord.setDay((String)object[4]);
+			projectMemberDateShiftRecord.setShiftRecord((String)object[5]);
+			ShiftRecord_list.add(projectMemberDateShiftRecord);
+        } 
+		
+		
+		
+		
+		//for(int i = 0; i < list.size(); i++ ) {
+			
+		//	projectMemberDateShiftRecord.setShiftRecord(list.get(i));
+        //} 
+		session.close();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return ShiftRecord_list;
+	}
 
 }

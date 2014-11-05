@@ -133,6 +133,10 @@ public class Project_InformationService {
 		return project_ManagerDaoImpl.selectProject_Manager(projectId);
 	}
 	
+	public Project_Manager getProject_Manager_ByManagerId(String projectManagerId){
+		return project_ManagerDaoImpl.selectProject_Manager_ByManagerId(projectManagerId);
+	}
+	
 	
 	/**
 	 * Project Member Operation
@@ -203,6 +207,11 @@ public class Project_InformationService {
 	public ProjectMemberDateShiftRecord getShiftRecord(
 			ProjectMemberDateShiftRecord shiftRecord){
 		return projectMemberDateShiftRecordDaoImpl.selectShiftRecord(shiftRecord);
+	}
+	
+	public LinkedList<ProjectMemberDateShiftRecord> getShiftRecordByProjectIdAndMemberId(
+				String projectId, String memberId){
+		return projectMemberDateShiftRecordDaoImpl.selectShiftRecordByProjectIdAndMemberId(projectId, memberId);
 	}
 	
 }
