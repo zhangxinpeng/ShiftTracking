@@ -104,4 +104,28 @@ public class Project_ManagerDaoImpl extends BaseDao implements Project_ManagerDa
 		}
 		return project_Manager;		
 	}
+	
+	public Project_Manager selectProject_Manager_ByManagerId(String projectManagerId) {
+		// TODO Auto-generated method stub
+		Project_Manager project_Manager = new Project_Manager();
+		try{
+		
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+		String hql = "select pm.projectId, pm.ManagerId from Project_Manager pm where pm.ManagerId = ?";
+		Query querySelect = session.createQuery(hql);
+		querySelect.setString(0, projectManagerId);
+		List<Object[]> list = querySelect.list();
+		trans.commit();
+		for(Object[] object : list){      
+			project_Manager.setProjectId((String)object[0]);
+			project_Manager.setManagerId((String)object[1]);        
+        }   
+		session.close();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return project_Manager;		
+	}
 }

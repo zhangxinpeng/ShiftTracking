@@ -52,13 +52,20 @@ public class Project_ManagerDaoImplTest {
 		//ApplicationContext ctx = 
 		//		new FileSystemXmlApplicationContext("applicationContext-DatabaseOperation.xml");
 		// insertProject_Manager_Test();
-		insertProject_Manager_Test();
-		deleteProject_Manager_Test();
+		//insertProject_Manager_Test();
+		//deleteProject_Manager_Test();
+		selectProject_Manager_ByManagerId_Test();
 	     
 	}
 	
 	public void selectProject_Manager_Test(){
 		Project_Manager pm = project_ManagerDaoImpl.selectProject_Manager("aaaaaaaaaa");
+		System.out.println("project id:" + pm.projectId);
+		System.out.println("manager id:" + pm.ManagerId);
+	}
+	
+	public void selectProject_Manager_ByManagerId_Test(){
+		Project_Manager pm = project_ManagerDaoImpl.selectProject_Manager_ByManagerId("wangjianjun@qq.com");
 		System.out.println("project id:" + pm.projectId);
 		System.out.println("manager id:" + pm.ManagerId);
 	}

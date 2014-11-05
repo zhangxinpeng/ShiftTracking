@@ -18,6 +18,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.ibm.hrnotes.shifttracking.dao.impl.Employee_PeMDaoImpl;
 import com.ibm.hrnotes.shifttracking.dao.impl.Project_ManagerDaoImpl;
+import com.ibm.hrnotes.shifttracking.entites.ProjectMemberDateShiftRecord;
 import com.ibm.hrnotes.shifttracking.entites.Project_Manager;
 import com.ibm.hrnotes.shifttracking.action.*;
 import com.ibm.hrnotes.shifttracking.converters.*;
@@ -54,7 +55,8 @@ public class ProjectMemberDateShiftRecordDaoImplTest {
 		//insertProjectMemberDateShiftRecord_Test();
 		//selectProjectMemberDateShiftRecord_Test();
 		//updateProjectMemberDateShiftRecord();
-		deleteProjectMemberDateShiftRecord();
+		//deleteProjectMemberDateShiftRecord();
+		selectProjectMemberDateShiftRecordByProjectIdAndMemberId_Test();
 	}
 	
 	/*
@@ -88,6 +90,18 @@ public class ProjectMemberDateShiftRecordDaoImplTest {
 		System.out.println("Shift Record :" + record.getShiftRecord());
 		
 
+	}
+	
+	public void selectProjectMemberDateShiftRecordByProjectIdAndMemberId_Test(){
+		LinkedList<ProjectMemberDateShiftRecord> list = projectMemberDateShiftRecordDaoImpl.selectShiftRecordByProjectIdAndMemberId("project_01", "chengxiao@qq.com");
+		for(int i = 0; i < list.size(); i++ ){
+			System.out.println(list.get(i).getProjectId());
+			System.out.println(list.get(i).getMemberId());
+			System.out.println(list.get(i).getYear());
+			System.out.println(list.get(i).getMonth());
+			System.out.println(list.get(i).getDay());
+			System.out.println(list.get(i).getShiftRecord());
+		}
 	}
 	
     
